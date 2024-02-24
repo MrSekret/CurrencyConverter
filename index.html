@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/Convertator/src/reset.css">
+    <link rel="stylesheet" href="/Convertator/src/styles.css">
+    <title>Converator</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+          <div class="header__container">
+            <nav class="header__nav">
+              <ul class="header__nav-list">
+                <li class="header__nav-list-item"><span></span>Menu</li>
+                <li class="header__nav-list-item">CURRENCY</li>
+                <li class="header__nav-list-item"><a href="">Edit</a></li>
+              </ul>
+            </nav>
+          </div>
+        </header>
+
+        <main class="main">
+          <section class="update-info">
+            <div class="update-info__container">
+              <p class="update-info__text">Updated <span></span></p>
+            </div>
+          </section>
+
+          <section class="currencies">
+            <div class="currencies__container">
+              <img src="https://flagcdn.com/ua.svg" width="30" alt="Ukraine" class="currencies__img">
+              <div class="currencies__currency">UAH</div>
+              <input type="number" class="currencies__number" id="inputField0" oninput="handleInputChange(this)">
+            </div>
+          </section>
+
+          <section class="currencies">
+            <div class="currencies__container">
+              <img src="https://flagcdn.com/us.svg" width="30" alt="USA"  class="currencies__img">
+              <div class="currencies__currency">USD</div>
+              <input type="number" class="currencies__number" id="inputField1" oninput="handleInputChange(this)">
+            </div>
+          </section>
+
+          <section class="currencies">
+            <div class="currencies__container">
+              <img src="https://flagcdn.com/pl.svg" width="30" alt="Poland"  class="currencies__img">
+              <div class="currencies__currency">PLN</div>
+              <input type="number" class="currencies__number" id="inputField2 " oninput="handleInputChange(this)">
+            </div>
+          </section>
+        </main>
+    </div>
+
+    <script src="/Convertator/src/script.js"></script>
+</body>
+</html>
