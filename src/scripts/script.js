@@ -16,11 +16,13 @@ function sendRequest(from, to){
     })
 }
 
+const selectAllText = data => { data.select() }
 const currencyarr = document.querySelectorAll(".currencies__currency")
 const inputarr = document.querySelectorAll(".currencies__number")
 
 function handleInputChange(data) {
     const id = (data.id).split("")[10]
+
     inputarr.forEach((e, ind) => {
         if(ind!=id){
             sendRequest(currencyarr[id].textContent, currencyarr[ind].textContent)
@@ -32,4 +34,3 @@ function handleInputChange(data) {
         }
     })
 }
-

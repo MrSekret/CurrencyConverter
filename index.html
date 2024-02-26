@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/Convertator/src/reset.css">
-    <link rel="stylesheet" href="/Convertator/src/styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./src/styles/reset.css">
+    <link rel="stylesheet" href="./src/styles/styles.css">
     <title>Converator</title>
 </head>
 <body>
@@ -19,7 +19,10 @@
               <ul class="header__nav-list">
                 <li class="header__nav-list-item"><span></span>Menu</li>
                 <li class="header__nav-list-item">CURRENCY</li>
-                <li class="header__nav-list-item"><a href="">Edit</a></li>
+                <li class="header__nav-list-item">
+                  <a id="header__done" href="#">Done</a>
+                  <a id="header__edit" href="#">Edit</a>
+                </li>
               </ul>
             </nav>
           </div>
@@ -28,36 +31,40 @@
         <main class="main">
           <section class="update-info">
             <div class="update-info__container">
-              <p class="update-info__text">Updated <span></span></p>
+              <p class="update-info__text">Updated: <span></span></p>
             </div>
           </section>
 
           <section class="currencies">
             <div class="currencies__container">
-              <img src="https://flagcdn.com/ua.svg" width="30" alt="Ukraine" class="currencies__img">
+              <img src="https://flagcdn.com/ua.svg" alt="Ukraine" class="currencies__img">
               <div class="currencies__currency">UAH</div>
-              <input type="number" class="currencies__number" id="inputField0" oninput="handleInputChange(this)">
+              <input type="number" class="currencies__number" id="inputField0" value="0" onclick="selectAllText(this)" oninput="handleInputChange(this)">
+              <div class="currencies__dragbutton" id="currencies__dragbutton0"><span></span><span></span><span></span></div>
             </div>
           </section>
 
           <section class="currencies">
             <div class="currencies__container">
-              <img src="https://flagcdn.com/us.svg" width="30" alt="USA"  class="currencies__img">
+              <img src="https://flagcdn.com/us.svg" alt="USA"  class="currencies__img">
               <div class="currencies__currency">USD</div>
-              <input type="number" class="currencies__number" id="inputField1" oninput="handleInputChange(this)">
+              <input type="number" class="currencies__number" id="inputField1" value="0" onclick="selectAllText(this)" oninput="handleInputChange(this)">
+              <div class="currencies__dragbutton" id="currencies__dragbutton1"><span></span><span></span><span></span></div>
             </div>
           </section>
 
           <section class="currencies">
             <div class="currencies__container">
-              <img src="https://flagcdn.com/pl.svg" width="30" alt="Poland"  class="currencies__img">
+              <img src="https://flagcdn.com/pl.svg" alt="Poland"  class="currencies__img">
               <div class="currencies__currency">PLN</div>
-              <input type="number" class="currencies__number" id="inputField2 " oninput="handleInputChange(this)">
+              <input type="number" class="currencies__number" id="inputField2" value="0" onclick="selectAllText(this)" oninput="handleInputChange(this)">
+              <div class="currencies__dragbutton" id="currencies__dragbutton2"><span></span><span></span><span></span></div>
             </div>
           </section>
         </main>
     </div>
 
-    <script src="/Convertator/src/script.js"></script>
+    <script src="./src/scripts/script.js"></script>
+    <script src="./src/scripts/editcurrencies.js"></script>
 </body>
 </html>

@@ -1,0 +1,140 @@
+
+
+[class$=__container]{
+  max-width: 430px;
+  margin: 0 auto;
+
+}
+
+.wrapper{
+  font-size: 18px;
+  background: #383838;
+  color: #8f8f8f;
+  font-family: Poppins;
+  padding-top: 64px;
+  overflow: hidden;
+}
+
+.fadeIn{
+  animation: fadeInAnimation 0.5s ease forwards
+}
+.fadeOut{
+  animation: fadeOutAnimation 0.5s ease forwards
+}
+
+@keyframes fadeInAnimation  {
+  0% {
+      opacity: 0;
+      transform: scale(0);
+  }
+  100% {
+      opacity: 1;
+      transform: scale(1);
+  }
+}
+@keyframes fadeOutAnimation {
+  0% {
+      opacity: 1;
+      transform: scale(1);
+  }
+  100% {
+      opacity: 0;
+      transform: scale(0);
+  }
+}
+/*------------------------------------------*/
+
+.header {
+  background: #494949;
+}
+.header__container {
+  padding: 18px;
+  max-width: 1920px;
+}
+.header__nav {
+}
+.header__nav-list {
+  display: flex;
+  justify-content: space-between;
+}
+.header__nav-list-item:first-child,
+.header__nav-list-item:last-child{
+  width: 65px;
+  display: flex;
+  justify-content: center;
+  position: relative; 
+}
+.header__nav-list-item:nth-child(2) {
+  margin: 0 auto;
+}
+#header__edit{
+}
+#header__done {
+  display: none;
+  position: absolute;
+  left: -59px;
+  color: #9af597;
+}
+
+/*------------------------------------------*/
+
+.main{
+  display: flex;
+  flex-direction: column;  
+}
+.update-info {
+}
+.update-info__container {
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+}
+.update-info__text {
+}
+
+/*------------------------------------------*/
+
+.currencies {
+}
+.currencies__container {
+  display: flex;
+  padding: 8px;
+  align-items: center;
+  position: relative;
+}
+.currencies__img {
+  width: 48px;
+  height: 32px;
+}
+.currencies__currency {
+  margin-left: 12px;
+  width: 37px;
+}
+.currencies__number {
+  margin: 0 0 0 auto;
+  text-align: right;
+  font-size: 24px;
+  background: #383838;
+  color: #8f8f8f;
+  overflow: hidden;
+  transition: width 0.5s ease;
+}
+.currencies__dragbutton{
+  display: none;
+  flex-direction: column;
+  cursor: grab;
+  position: absolute;
+  right: -26px;
+}
+.currencies__dragbutton span{
+  width: 24px;
+  height: 3.5px;
+  margin-left: 8px;
+  background-color: #252525;
+}
+.currencies__dragbutton span:nth-child(1){
+  margin-bottom: 5px;
+}
+.currencies__dragbutton span:nth-child(3){
+  margin-top: 5px;
+}
