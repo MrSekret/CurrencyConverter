@@ -42,6 +42,14 @@
       transform: scale(0);
   }
 }
+
+/*------------------------------------------*/
+.glyphicon-move:before {
+  content: ""!important;
+}
+.sortable-ghost {
+  opacity: 0.5; /* Устанавливаем прозрачность для "призрака" элемента */
+}
 /*------------------------------------------*/
 
 .header {
@@ -80,7 +88,9 @@
 
 .main{
   display: flex;
-  flex-direction: column;  
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 100%;
 }
 .update-info {
 }
@@ -95,12 +105,16 @@
 /*------------------------------------------*/
 
 .currencies {
+  position: relative;
+  height: 50px;
+  width: 430px;
+  padding-right: 36px;
+  transition: border 0.3s ease;
 }
 .currencies__container {
   display: flex;
-  padding: 8px;
+  padding: 8px 12px;
   align-items: center;
-  position: relative;
 }
 .currencies__img {
   width: 48px;
@@ -111,30 +125,29 @@
   width: 37px;
 }
 .currencies__number {
-  margin: 0 0 0 auto;
+  margin: 0 0 0 17px;
   text-align: right;
   font-size: 24px;
   background: #383838;
   color: #8f8f8f;
   overflow: hidden;
-  transition: width 0.5s ease;
 }
 .currencies__dragbutton{
   display: none;
   flex-direction: column;
   cursor: grab;
   position: absolute;
-  right: -26px;
+  right: 6px;
 }
 .currencies__dragbutton span{
-  width: 24px;
-  height: 3.5px;
-  margin-left: 8px;
-  background-color: #252525;
+  width: 32px;
+  height: 2.5px;
+  background-color: #525252;
 }
 .currencies__dragbutton span:nth-child(1){
-  margin-bottom: 5px;
+  margin-bottom: 4px;
 }
 .currencies__dragbutton span:nth-child(3){
-  margin-top: 5px;
+  margin-bottom: 2px;
+  margin-top: 4px;
 }

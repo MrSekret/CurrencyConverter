@@ -1,6 +1,13 @@
 const buttondone = document.getElementById("header__done")
 const buttonedit = document.getElementById("header__edit")
-const dragbutton = document.getElementById("currencies__dragbutton0")
+const currencies = document.querySelectorAll(".currencies")
+const dragbuttons = document.querySelectorAll(".currencies__dragbutton")
+
+Sortable.create(currencies__wrapper, {
+    handle: '.currencies__dragbutton',
+    animation: 350,
+    swap: true
+})
 
 buttonedit.addEventListener('click', () => {
     let computedStyles = window.getComputedStyle(buttondone)
@@ -22,7 +29,7 @@ buttonedit.addEventListener('click', () => {
         })
     }else{
         hidedragmenu()
-        
+
         buttondone.classList.remove("fadeIn")
         buttonedit.classList.remove("fadeIn")
         buttondone.classList.add("fadeOut")
@@ -41,6 +48,7 @@ buttonedit.addEventListener('click', () => {
 })
 buttondone.addEventListener('click', () => {
     hidedragmenu()
+
     buttondone.classList.remove("fadeIn")
     buttonedit.classList.remove("fadeIn")
     buttondone.classList.add("fadeOut")
@@ -58,8 +66,9 @@ buttondone.addEventListener('click', () => {
 })
 
 function showdragmenu(){
-    const dragbuttons = document.querySelectorAll(".currencies__dragbutton")
-    const inputs = document.querySelectorAll(".currencies__number")
+    currencies.forEach(elem => {
+        elem.style.border = '2px dashed #838383'
+    })
     dragbuttons.forEach(elem => {
         elem.style.display = 'flex'
         elem.classList.add("fadeIn")
@@ -68,11 +77,11 @@ function showdragmenu(){
             elem.removeEventListener("animationend", animdrag)
         })
     })
-
-
 }
 function hidedragmenu(){
-    const dragbuttons = document.querySelectorAll(".currencies__dragbutton")
+    currencies.forEach(elem => {
+        elem.style.border = 'none'
+    })
     dragbuttons.forEach(elem => {
         elem.classList.add("fadeOut")
         elem.addEventListener('animationend', function animdrag(){

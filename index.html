@@ -12,6 +12,8 @@
     <title>Converator</title>
 </head>
 <body>
+  
+
     <div class="wrapper">
         <header class="header">
           <div class="header__container">
@@ -34,37 +36,39 @@
               <p class="update-info__text">Updated: <span></span></p>
             </div>
           </section>
+          <div class="currencies__wrapper" id="currencies__wrapper">
+            <section class="currencies ">
+              <div class="currencies__container">
+                <img src="https://flagcdn.com/ua.svg" alt="Ukraine" class="currencies__img">
+                <div class="currencies__currency">UAH</div>
+                <input type="number" class="currencies__number" id="inputField0" value="0" onclick="selectAllText(this)" oninput="handleInputChange(this)">
+                <div class="currencies__dragbutton glyphicon-move" id="currencies__dragbutton0"><span></span><span></span><span></span></div>
+              </div>
+            </section>
 
-          <section class="currencies">
-            <div class="currencies__container">
-              <img src="https://flagcdn.com/ua.svg" alt="Ukraine" class="currencies__img">
-              <div class="currencies__currency">UAH</div>
-              <input type="number" class="currencies__number" id="inputField0" value="0" onclick="selectAllText(this)" oninput="handleInputChange(this)">
-              <div class="currencies__dragbutton" id="currencies__dragbutton0"><span></span><span></span><span></span></div>
-            </div>
-          </section>
+            <section class="currencies ">
+              <div class="currencies__container">
+                <img src="https://flagcdn.com/us.svg" alt="USA"  class="currencies__img">
+                <div class="currencies__currency">USD</div>
+                <input type="number" class="currencies__number" id="inputField1" value="0" onclick="selectAllText(this)" oninput="handleInputChange(this)">
+                <div class="currencies__dragbutton glyphicon-move" id="currencies__dragbutton1"><span></span><span></span><span></span></div>
+              </div>
+            </section>
 
-          <section class="currencies">
-            <div class="currencies__container">
-              <img src="https://flagcdn.com/us.svg" alt="USA"  class="currencies__img">
-              <div class="currencies__currency">USD</div>
-              <input type="number" class="currencies__number" id="inputField1" value="0" onclick="selectAllText(this)" oninput="handleInputChange(this)">
-              <div class="currencies__dragbutton" id="currencies__dragbutton1"><span></span><span></span><span></span></div>
-            </div>
-          </section>
-
-          <section class="currencies">
-            <div class="currencies__container">
-              <img src="https://flagcdn.com/pl.svg" alt="Poland"  class="currencies__img">
-              <div class="currencies__currency">PLN</div>
-              <input type="number" class="currencies__number" id="inputField2" value="0" onclick="selectAllText(this)" oninput="handleInputChange(this)">
-              <div class="currencies__dragbutton" id="currencies__dragbutton2"><span></span><span></span><span></span></div>
-            </div>
-          </section>
+            <section class="currencies ">
+              <div class="currencies__container">
+                <img src="https://flagcdn.com/pl.svg" alt="Poland"  class="currencies__img">
+                <div class="currencies__currency">PLN</div>
+                <input type="number" class="currencies__number" id="inputField2" value="0" onclick="selectAllText(this)" oninput="handleInputChange(this)">
+                <div class="currencies__dragbutton glyphicon-move" id="currencies__dragbutton2"><span></span><span></span><span></span></div>
+              </div>
+            </section>
+          </div>
         </main>
     </div>
 
     <script src="./src/scripts/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
     <script src="./src/scripts/editcurrencies.js"></script>
 </body>
 </html>
