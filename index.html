@@ -39,36 +39,53 @@
           <div class="currencies__wrapper" id="currencies__wrapper">
             <section class="currencies ">
               <div class="currencies__container">
+                <a href="#" class="currencies__checkbox">
+                  <svg class="currencies__checkbox-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="#1b1b1b" d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
+                </a>
                 <img src="https://flagcdn.com/ua.svg" alt="Ukraine" class="currencies__img">
                 <div class="currencies__currency">UAH</div>
-                <input type="number" class="currencies__number" id="inputField0" value="0" onclick="selectAllText(this)" oninput="handleInputChange(this)">
-                <div class="currencies__dragbutton glyphicon-move" id="currencies__dragbutton0"><span></span><span></span><span></span></div>
+                <input type="number" class="currencies__number" value="0" onclick="selectAllText(this)" oninput="handleInputChange(this)">
+                <div class="currencies__dragbutton glyphicon-move"><span></span><span></span><span></span></div>
               </div>
             </section>
 
             <section class="currencies ">
               <div class="currencies__container">
+                <a href="#" class="currencies__checkbox">
+                  <svg class="currencies__checkbox-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="#1b1b1b" d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
+                </a>
                 <img src="https://flagcdn.com/us.svg" alt="USA"  class="currencies__img">
                 <div class="currencies__currency">USD</div>
-                <input type="number" class="currencies__number" id="inputField1" value="0" onclick="selectAllText(this)" oninput="handleInputChange(this)">
-                <div class="currencies__dragbutton glyphicon-move" id="currencies__dragbutton1"><span></span><span></span><span></span></div>
+                <input type="number" class="currencies__number" value="0" onclick="selectAllText(this)" oninput="handleInputChange(this)">
+                <div class="currencies__dragbutton glyphicon-move"><span></span><span></span><span></span></div>
               </div>
             </section>
 
             <section class="currencies ">
               <div class="currencies__container">
+                <a href="#" class="currencies__checkbox">
+                  <svg class="currencies__checkbox-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="#1b1b1b" d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
+                </a>
                 <img src="https://flagcdn.com/pl.svg" alt="Poland"  class="currencies__img">
                 <div class="currencies__currency">PLN</div>
-                <input type="number" class="currencies__number" id="inputField2" value="0" onclick="selectAllText(this)" oninput="handleInputChange(this)">
-                <div class="currencies__dragbutton glyphicon-move" id="currencies__dragbutton2"><span></span><span></span><span></span></div>
+                <input type="number" class="currencies__number" value="0" onclick="selectAllText(this)" oninput="handleInputChange(this)">
+                <div class="currencies__dragbutton glyphicon-move"><span></span><span></span><span></span></div>
               </div>
             </section>
+          </div>
+
+          <div class="searcher">
+            <input class="searcher__input">
+            <div class="searcher__field">
+              
+            </div>
           </div>
         </main>
     </div>
 
     <script src="./src/scripts/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
-    <script src="./src/scripts/editcurrencies.js"></script>
+    <script src="./src/scripts/editcurrencies.js" type="module"></script>
+    <script src="./src/scripts/searchcurrencies.js" type="module"></script>
 </body>
 </html>

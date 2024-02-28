@@ -1,4 +1,3 @@
-const API = "https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/usd/pln.json"
 
 function updateDate(date){
     const sorteddate = date.split("-")
@@ -8,29 +7,36 @@ function updateDate(date){
     document.querySelector('.update-info__text span').textContent = sorteddate[2] + " " + monthText + " " + sorteddate[0]
 }
 
-function sendRequest(from, to){
-    from = from.toLowerCase()
-    to = to.toLowerCase()
-    return fetch(`https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${from}/${to}.json`).then( response => {
+function sendRequest(){
+    return fetch(`https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/usd.json`).then( response => {
         return response.json()
     })
+    .catch((err) => console.log("Failed to load rate: " + err))
 }
 
 const selectAllText = data => { data.select() }
-const currencyarr = document.querySelectorAll(".currencies__currency")
-const inputarr = document.querySelectorAll(".currencies__number")
 
 function handleInputChange(data) {
-    const id = (data.id).split("")[10]
-
+    const currencyarr = document.querySelectorAll(".currencies__currency")
+    const inputarr = document.querySelectorAll(".currencies__number")
+    let id
+    inputarr.forEach((e, ind) => {
+        if(e==data){ 
+            id = ind
+        }
+    })
     inputarr.forEach((e, ind) => {
         if(ind!=id){
-            sendRequest(currencyarr[id].textContent, currencyarr[ind].textContent)
-                .then( responce => {
-                    updateDate(responce.date)
-                    e.value = (responce[`${currencyarr[ind].textContent.toLowerCase()}`] * data.value).toFixed(2)
+            sendRequest()
+                .then( response => {
+                    updateDate(response.date)
+                    let currencyId = currencyarr[id].textContent.toLowerCase()
+                    let otherId = currencyarr[ind].textContent.toLowerCase()
+                    let dollars = data.value / response.usd[currencyId]
+                    e.value = (response.usd[otherId] * dollars).toFixed(2)
                 })
                 .catch( err => console.log(err))
         }
     })
 }
+
