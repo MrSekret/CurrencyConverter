@@ -12,14 +12,18 @@
     <title>Converator</title>
 </head>
 <body>
-  
+    <div id="preloader">
+      <div class="loadingio-spinner-spinner-f2hqtlm8qco"><div class="ldio-rqyn75t70yn">
+        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        </div></div>
+    </div>
 
     <div class="wrapper">
         <header class="header">
           <div class="header__container">
             <nav class="header__nav">
               <ul class="header__nav-list">
-                <li class="header__nav-list-item"><span></span>Menu</li>
+                <li class="header__nav-list-item"><a href="https://github.com/MrSekret/CurrencyConverter" target="_blank">⚡Github</a></li>
                 <li class="header__nav-list-item">CURRENCY</li>
                 <li class="header__nav-list-item">
                   <a id="header__done" href="#">Done</a>
@@ -74,17 +78,24 @@
             </section>
           </div>
 
-          <div class="searcher">
-            <input class="searcher__input">
-            <div class="searcher__field">
+          <div class="searcher" id="currencies-list">
+            <input class="searcher__input search" placeholder="Search">
+            <ul class="searcher__list list">
               
-            </div>
+            </ul>
           </div>
         </main>
     </div>
 
-    <script src="./src/scripts/script.js"></script>
+    <script>
+      window.addEventListener("load", function() {
+        let loader = document.getElementById("preloader")
+        loader.style.display = "none"
+      })
+    </script>
+    <script src="./src/scripts/updatecurrencies.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
     <script src="./src/scripts/editcurrencies.js" type="module"></script>
     <script src="./src/scripts/searchcurrencies.js" type="module"></script>
 </body>

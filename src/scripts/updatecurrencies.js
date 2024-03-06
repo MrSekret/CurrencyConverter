@@ -1,4 +1,3 @@
-
 function updateDate(date){
     const sorteddate = date.split("-")
     let monthNumberInt = parseInt(sorteddate[1], 10)
@@ -8,7 +7,7 @@ function updateDate(date){
 }
 
 function sendRequest(){
-    return fetch(`https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/usd.json`).then( response => {
+    return fetch(`https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json`).then( response => {
         return response.json()
     })
     .catch((err) => console.log("Failed to load rate: " + err))
@@ -26,7 +25,7 @@ function handleInputChange(data) {
         }
     })
     inputarr.forEach((e, ind) => {
-        if(ind!=id){
+        if(ind!=id){   
             sendRequest()
                 .then( response => {
                     updateDate(response.date)
@@ -39,4 +38,3 @@ function handleInputChange(data) {
         }
     })
 }
-

@@ -1,8 +1,8 @@
-
 const searcher = document.querySelector(".searcher")
+const currencieswrapper = document.querySelector(".currencies__wrapper")
 
 function sendRequest(){
-    return fetch(`https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/usd.json`).then( response => {
+    return fetch(`https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json`).then( response => {
         return response.json()
     })
     .catch((err) => console.log("Failed to load rate: " + err))
@@ -48,7 +48,7 @@ sendRequestAboutCurrencies().then(response => {
             let context = checkInfo(response[index].capital, response[index].altSpellings)
             let flag = checkInfo(response[index].cca2)
     
-            let block = document.createElement('div')
+            let block = document.createElement('li')
             block.classList.add('searcher__block')
             block.innerHTML = `
                 <img style="width: 48px;" src="https://flagcdn.com/w40/${flag.toLowerCase()}.png" alt="${title}" class="searcher__block-img">
@@ -59,7 +59,7 @@ sendRequestAboutCurrencies().then(response => {
                 <div class="searcher__space"></div>
                 <a href="#" class="searcher__button">+</a>
             `
-            const targetElement = document.querySelector(".searcher__field")
+            const targetElement = document.querySelector(".searcher__list")
             targetElement.appendChild(block)
     
             const addbutton = document.querySelectorAll(".searcher__button")
@@ -89,15 +89,28 @@ sendRequestAboutCurrencies().then(response => {
                     currency.classList.remove("fadeIn")
                     currency.removeEventListener("animationend", animdrag)
                 })
+                checkboxs[checkboxs.length-1].addEventListener('click', function deletesection(){
+                    currencieswrapper.removeChild(currency)
+                    checkboxs[checkboxs.length-1].removeEventListener('click', deletesection)
+                })
             })
+
+            let options = {
+                valueNames: [ 'searcher__block-title', 'searcher__block-context' ]
+            }
+            let userList = new List('currencies-list', options)
+            
             buttonindex++
           })
     })    
 })
 
 export function openSearcher(){
-    searcher.style.right = 0
+    console.log(window.innerWidth)
+    if(window.innerWidth>772) searcher.style.right = 0
+    else searcher.style.top = "32vh"
 }
 export function closeSearcher(){
-    searcher.style.right = -304 +"px"
+    if(window.innerWidth>772) searcher.style.right = -304 +"px"
+    else searcher.style.top = "100vh"
 }
