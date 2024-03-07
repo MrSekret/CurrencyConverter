@@ -1,2 +1,2 @@
  ## ```WCC``` 💲 Web Сurrency Converter
-  📌 [Converter](https://mrsekret.github.io/BreadcrumbsCurrencyConverter/)
+  📌 [Converter](https://mrsekret.github.io/CurrencyConverter/)
