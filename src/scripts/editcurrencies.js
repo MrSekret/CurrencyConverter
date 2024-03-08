@@ -13,6 +13,7 @@ checkboxs.forEach((elem, ind) => {
     })
 })
 
+
 Sortable.create(currencies__wrapper, {
     handle: '.currencies__dragbutton',
     animation: 350,
@@ -34,7 +35,6 @@ buttonedit.addEventListener('click', () => {
     
     copyelement(propdisplay)
     
-    
     if(propdisplay=="none"){
         openSearcher()
         showdragmenu()
@@ -55,6 +55,7 @@ buttonedit.addEventListener('click', () => {
         let contentstaticwrapper = staticwrapper.innerHTML
         let lengthstaticwrapper = staticwrapper.querySelectorAll("section").length
         let lengthcurrencieswrapper = currencieswrapper.querySelectorAll("section").length
+
         closeSearcher()
         hidedragmenu()
         .then(() => {
@@ -68,10 +69,10 @@ buttonedit.addEventListener('click', () => {
 
                     currencies.forEach(elem => {
                         elem.classList.add("fadeOut")
-                        elem.addEventListener('animationend', function animdrag(){
+                        elem.addEventListener('animationend', function animhide(){
                             elem.classList.remove("fadeOut")
                             elem.style.display = 'none'
-                            elem.removeEventListener("animationend", animdrag)
+                            elem.removeEventListener("animationend", animhide)
                             animationsCount++
                             if (animationsCount === currencies.length) {
                                 resolve()
@@ -86,9 +87,9 @@ buttonedit.addEventListener('click', () => {
             const currencies = document.querySelectorAll(".currencies")
             currencies.forEach(elem => {
                 elem.classList.add("fadeIn")
-                elem.addEventListener('animationend', function animdrag(){
+                elem.addEventListener('animationend', function animshow(){
                     elem.classList.remove("fadeIn")
-                    elem.removeEventListener("animationend", animdrag)
+                    elem.removeEventListener("animationend", animshow)
                 })
             })
             currencieswrapper.querySelectorAll(".currencies__checkbox").forEach((elem, ind) => {
@@ -143,13 +144,13 @@ function showdragmenu(){
     const dragbuttons = document.querySelectorAll(".currencies__dragbutton")
     const checkboxs = document.querySelectorAll(".currencies__checkbox")
     function show(elem){
+        elem.style.display= "flex"
         elem.classList.add("fadeIn")
-        elem.addEventListener('animationend', function animdrag(){
+        elem.addEventListener('animationend', function animshow(){
             elem.classList.remove("fadeIn")
-            elem.removeEventListener("animationend", animdrag)
+            elem.removeEventListener("animationend", animshow)
         })
     }
-
     currencies.forEach(elem => {
         elem.style.border = '2px dashed #838383'
     })
@@ -160,6 +161,8 @@ function showdragmenu(){
         show(elem)
     })
 }
+
+
 function hidedragmenu(){
     return new Promise((resolve) => {
         const currencies = document.querySelectorAll(".currencies")
@@ -167,10 +170,10 @@ function hidedragmenu(){
         const checkboxs = document.querySelectorAll(".currencies__checkbox")
         function hide(elem){
             elem.classList.add("fadeOut")
-            elem.addEventListener('animationend', function animdrag(){
+            elem.addEventListener('animationend', function animhide(){
                 elem.classList.remove("fadeOut")
                 elem.style.display = 'none'
-                elem.removeEventListener("animationend", animdrag)
+                elem.removeEventListener("animationend", animhide)
             })
         }
 
@@ -186,6 +189,8 @@ function hidedragmenu(){
         resolve()
     })
 }
+
+
 function comparewrappers(container1, container2){
     let container1Div = container1.querySelectorAll(".currencies__currency")
     let container2Div = container2.querySelectorAll(".currencies__currency")

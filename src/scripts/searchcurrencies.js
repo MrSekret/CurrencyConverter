@@ -24,8 +24,8 @@ function checkCountries(elem1, elem2){
     return elem1==undefined ? elem2 : elem1
 }
 
+
 sendRequestAboutCurrencies().then(response => {
-    console.log(response)
     sendRequest().then((data) => {
         const datacca3 = []
         const responsecca3 = []
@@ -48,8 +48,7 @@ sendRequestAboutCurrencies().then(response => {
                 let curr = Object.keys(response[index].currencies)
                 if(curr[0] !== undefined) title = curr[0]
             }
-            let country = checkCountries(response[index].altSpellings[1], response[index].altSpellings[0])
-            let context = checkInfo(response[index].capital, response[index].altSpellings)
+            let context = response[index].name.common
             let flag = checkInfo(response[index].cca2)
     
             let block = document.createElement('li')
@@ -58,7 +57,7 @@ sendRequestAboutCurrencies().then(response => {
                 <img style="width: 48px;" src="https://flagcdn.com/w40/${flag.toLowerCase()}.png" alt="${title}" class="searcher__block-img">
                 <div class="searcher__block-text">
                     <h2 class="searcher__block-title">${title}</h2>
-                    <p class="searcher__block-context">${country}</p>
+                    <p class="searcher__block-context">${context}</p>
                 </div>
                 <div class="searcher__space"></div>
                 <a href="#" class="searcher__button">+</a>
@@ -76,7 +75,7 @@ sendRequestAboutCurrencies().then(response => {
                             <a href="#" class="currencies__checkbox">
                                 <svg class="currencies__checkbox-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="#1b1b1b" d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
                             </a>
-                            <img src="https://flagcdn.com/w40/${flag.toLowerCase()}.png" alt="${country}" class="currencies__img">
+                            <img src="https://flagcdn.com/w40/${flag.toLowerCase()}.png" alt="${context}" class="currencies__img">
                             <div class="currencies__currency">${title}</div>
                             <input type="number" class="currencies__number" value="0" onclick="selectAllText(this)" oninput="handleInputChange(this)">
                             <div class="currencies__dragbutton glyphicon-move"><span></span><span></span><span></span></div>
