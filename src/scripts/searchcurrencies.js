@@ -106,7 +106,6 @@ sendRequestAboutCurrencies().then(response => {
 })
 
 export function openSearcher(){
-    console.log(window.innerWidth)
     if(window.innerWidth>772) searcher.style.right = 0
     else searcher.style.top = "32vh"
 }

@@ -20,18 +20,24 @@ Sortable.create(currencies__wrapper, {
 })
 
 
-let previousSectionsLength = null
 let staticwrapper = null
+const copyelement = (prop) => {
+    if(prop=="none"){
+        staticwrapper = document.querySelector(".currencies__wrapper").cloneNode(true)
+    }
+}
+let previousSectionsLength = null
 buttonedit.addEventListener('click', () => {
     let computedStyles = window.getComputedStyle(buttondone)
     let propdisplay = computedStyles.getPropertyValue("display")
     let currentSectionsLength = document.querySelectorAll(".currencies").length
     
-    openSearcher()
-    showdragmenu()
-
-
+    copyelement(propdisplay)
+    
+    
     if(propdisplay=="none"){
+        openSearcher()
+        showdragmenu()
         buttonedit.classList.remove("fadeIn")
         buttonedit.classList.add("fadeOut")
         buttonedit.addEventListener('animationend', function animedit(){
@@ -43,19 +49,55 @@ buttonedit.addEventListener('click', () => {
             buttonedit.classList.add("fadeIn")
             buttonedit.removeEventListener('animationend', animedit)
         })
-        staticwrapper = currencieswrapper.cloneNode(true)
         previousSectionsLength = currentSectionsLength
     }
     else{
-        // currencieswrapper.innerHTML = ""
-        // currencieswrapper.appendChild(staticwrapper.cloneNode(true))
-
-        for(let i=currentSectionsLength-1; i>previousSectionsLength-1; i--){
-            currencieswrapper.removeChild(currencysections[i])
-        }
-
+        let contentstaticwrapper = staticwrapper.innerHTML
+        let lengthstaticwrapper = staticwrapper.querySelectorAll("section").length
+        let lengthcurrencieswrapper = currencieswrapper.querySelectorAll("section").length
         closeSearcher()
         hidedragmenu()
+        .then(() => {
+            if(lengthstaticwrapper == lengthcurrencieswrapper){ 
+                return Promise.resolve()
+            }
+            else{
+                return new Promise(resolve => {
+                    const currencies = document.querySelectorAll(".currencies")
+                    let animationsCount = 0
+
+                    currencies.forEach(elem => {
+                        elem.classList.add("fadeOut")
+                        elem.addEventListener('animationend', function animdrag(){
+                            elem.classList.remove("fadeOut")
+                            elem.style.display = 'none'
+                            elem.removeEventListener("animationend", animdrag)
+                            animationsCount++
+                            if (animationsCount === currencies.length) {
+                                resolve()
+                            }
+                        })
+                    })
+                })
+            }
+        })
+        .then(() => {
+            currencieswrapper.innerHTML = contentstaticwrapper
+            const currencies = document.querySelectorAll(".currencies")
+            currencies.forEach(elem => {
+                elem.style.display = 'flex'
+                elem.classList.add("fadeIn")
+                elem.addEventListener('animationend', function animdrag(){
+                    elem.classList.remove("fadeIn")
+                    elem.removeEventListener("animationend", animdrag)
+                })
+            })
+            currencieswrapper.querySelectorAll(".currencies__checkbox").forEach((elem, ind) => {
+                elem.addEventListener('click', function deletesection(event){
+                    event.target.closest('.currencies').remove()
+                })
+            })
+        })
 
         buttondone.classList.remove("fadeIn")
         buttonedit.classList.remove("fadeIn")
@@ -74,6 +116,8 @@ buttonedit.addEventListener('click', () => {
         previousSectionsLength = currentSectionsLength
     }
 })
+
+
 buttondone.addEventListener('click', () => {
     closeSearcher()
     hidedragmenu()
@@ -119,25 +163,28 @@ function showdragmenu(){
     })
 }
 function hidedragmenu(){
-    const currencies = document.querySelectorAll(".currencies")
-    const dragbuttons = document.querySelectorAll(".currencies__dragbutton")
-    const checkboxs = document.querySelectorAll(".currencies__checkbox")
-    function hide(elem){
-        elem.classList.add("fadeOut")
-        elem.addEventListener('animationend', function animdrag(){
-            elem.classList.remove("fadeOut")
-            elem.style.display = 'none'
-            elem.removeEventListener("animationend", animdrag)
-        })
-    }
+    return new Promise((resolve) => {
+        const currencies = document.querySelectorAll(".currencies")
+        const dragbuttons = document.querySelectorAll(".currencies__dragbutton")
+        const checkboxs = document.querySelectorAll(".currencies__checkbox")
+        function hide(elem){
+            elem.classList.add("fadeOut")
+            elem.addEventListener('animationend', function animdrag(){
+                elem.classList.remove("fadeOut")
+                elem.style.display = 'none'
+                elem.removeEventListener("animationend", animdrag)
+            })
+        }
 
-    currencies.forEach(elem => {
-        elem.style.border = 'none'
-    })
-    checkboxs.forEach(elem => {
-        hide(elem)
-    })
-    dragbuttons.forEach(elem => {
-        hide(elem)
+        currencies.forEach(elem => {
+            elem.style.border = 'none'
+        })
+        checkboxs.forEach(elem => {
+            hide(elem)
+        })
+        dragbuttons.forEach(elem => {
+            hide(elem)
+        })
+        resolve()
     })
 }

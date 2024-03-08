@@ -9,7 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./src/styles/reset.css">
     <link rel="stylesheet" href="./src/styles/styles.css">
-    <title>Converator</title>
+    <link rel="icon" href="./src/icon.png">
+    <title>CurrencyConverter</title>
 </head>
 <body>
     <div id="preloader">
@@ -86,12 +87,15 @@
           </div>
         </main>
     </div>
-
     <script>
-      window.addEventListener("load", function() {
-        let loader = document.getElementById("preloader")
-        loader.style.display = "none"
-      })
+      window.onload = () => {
+        let preloader = document.getElementById("preloader")
+        preloader.classList.add("hide-preloader")
+        preloader.classList.add("hide-preloader")
+        setTimeout(() => {
+          preloader.classList.add("preloader-hidden")
+        }, 950)
+      }
     </script>
     <script src="./src/scripts/updatecurrencies.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
