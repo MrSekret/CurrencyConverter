@@ -144,7 +144,6 @@ function showdragmenu(){
     const dragbuttons = document.querySelectorAll(".currencies__dragbutton")
     const checkboxs = document.querySelectorAll(".currencies__checkbox")
     function show(elem){
-        elem.style.display = 'flex'
         elem.classList.add("fadeIn")
         elem.addEventListener('animationend', function animdrag(){
             elem.classList.remove("fadeIn")

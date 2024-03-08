@@ -252,11 +252,12 @@ body{
   border: 2px solid #1f1f1f;
   background: #6e6e6e;
   color: #dfdfdf;
+  text-indent: 10px;
 }
 .searcher__input::placeholder {
   position: absolute;
   top: 4px;
-  left: 10px;
+  left: 0;
   color: #cecece;
 }
 .searcher__list{
