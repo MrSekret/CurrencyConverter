@@ -85,7 +85,6 @@ buttonedit.addEventListener('click', () => {
             currencieswrapper.innerHTML = contentstaticwrapper
             const currencies = document.querySelectorAll(".currencies")
             currencies.forEach(elem => {
-                elem.style.display = 'flex'
                 elem.classList.add("fadeIn")
                 elem.addEventListener('animationend', function animdrag(){
                     elem.classList.remove("fadeIn")
