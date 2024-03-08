@@ -64,35 +64,37 @@ sendRequestAboutCurrencies().then(response => {
     
             const addbutton = document.querySelectorAll(".searcher__button")
             addbutton[buttonindex].addEventListener('click', function addcurrency(){
-                let currency = document.createElement('section')
-                currency.classList.add('currencies')
-                currency.innerHTML = `
-                    <div class="currencies__container">
-                        <a href="#" class="currencies__checkbox">
-                            <svg class="currencies__checkbox-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="#1b1b1b" d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
-                        </a>
-                        <img src="https://flagcdn.com/w40/${flag.toLowerCase()}.png" alt="${context}" class="currencies__img">
-                        <div class="currencies__currency">${title}</div>
-                        <input type="number" class="currencies__number" value="0" onclick="selectAllText(this)" oninput="handleInputChange(this)">
-                        <div class="currencies__dragbutton glyphicon-move"><span></span><span></span><span></span></div>
-                </div>
-                `
-                const targetElement = document.querySelector(".currencies__wrapper")
-                targetElement.appendChild(currency)
-                const dragbuttons = document.querySelectorAll(".currencies__dragbutton")
-                const checkboxs = document.querySelectorAll(".currencies__checkbox")
-                currency.style.border = '2px dashed #838383'
-                dragbuttons[dragbuttons.length-1].style.display = 'flex'
-                checkboxs[checkboxs.length-1].style.display = 'flex'
-                currency.classList.add("fadeIn")
-                currency.addEventListener('animationend', function animdrag(){
-                    currency.classList.remove("fadeIn")
-                    currency.removeEventListener("animationend", animdrag)
-                })
-                checkboxs[checkboxs.length-1].addEventListener('click', function deletesection(){
-                    currencieswrapper.removeChild(currency)
-                    checkboxs[checkboxs.length-1].removeEventListener('click', deletesection)
-                })
+                if(currencieswrapper.querySelectorAll("section").length<12){
+                    let currency = document.createElement('section')
+                    currency.classList.add('currencies')
+                    currency.innerHTML = `
+                        <div class="currencies__container">
+                            <a href="#" class="currencies__checkbox">
+                                <svg class="currencies__checkbox-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="#1b1b1b" d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
+                            </a>
+                            <img src="https://flagcdn.com/w40/${flag.toLowerCase()}.png" alt="${context}" class="currencies__img">
+                            <div class="currencies__currency">${title}</div>
+                            <input type="number" class="currencies__number" value="0" onclick="selectAllText(this)" oninput="handleInputChange(this)">
+                            <div class="currencies__dragbutton glyphicon-move"><span></span><span></span><span></span></div>
+                    </div>
+                    `
+                    const targetElement = document.querySelector(".currencies__wrapper")
+                    targetElement.appendChild(currency)
+                    const dragbuttons = document.querySelectorAll(".currencies__dragbutton")
+                    const checkboxs = document.querySelectorAll(".currencies__checkbox")
+                    currency.style.border = '2px dashed #838383'
+                    dragbuttons[dragbuttons.length-1].style.display = 'flex'
+                    checkboxs[checkboxs.length-1].style.display = 'flex'
+                    currency.classList.add("fadeIn")
+                    currency.addEventListener('animationend', function animdrag(){
+                        currency.classList.remove("fadeIn")
+                        currency.removeEventListener("animationend", animdrag)
+                    })
+                    checkboxs[checkboxs.length-1].addEventListener('click', function deletesection(){
+                        currencieswrapper.removeChild(currency)
+                        checkboxs[checkboxs.length-1].removeEventListener('click', deletesection)
+                    })
+                }
             })
 
             let options = {

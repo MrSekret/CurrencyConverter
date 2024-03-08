@@ -58,7 +58,7 @@ buttonedit.addEventListener('click', () => {
         closeSearcher()
         hidedragmenu()
         .then(() => {
-            if(lengthstaticwrapper == lengthcurrencieswrapper){ 
+            if(lengthstaticwrapper == lengthcurrencieswrapper && !comparewrappers(staticwrapper, currencieswrapper)){ 
                 return Promise.resolve()
             }
             else{
@@ -187,4 +187,19 @@ function hidedragmenu(){
         })
         resolve()
     })
+}
+function comparewrappers(container1, container2){
+    let container1Div = container1.querySelectorAll(".currencies__currency")
+    let container2Div = container2.querySelectorAll(".currencies__currency")
+    const container1Countries = []
+    const container2Countries = []
+    container1Div.forEach(elem => {
+        container1Countries.push(elem.innerHTML)
+    })
+    container2Div.forEach(elem => {
+        container2Countries.push(elem.innerHTML)
+    })
+    console.log(container1Countries)
+    console.log(container2Countries)
+    return container1Countries.some(element => container2Countries.includes(element))
 }
